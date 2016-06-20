@@ -1,0 +1,24 @@
+{
+  "name": "kaigi-no-owari-server",
+  "version": "1.0.0",
+  "description": "スケジュール情報を配信するAPIサーバー",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaigi-no-owari/kaigi-no-owari-server.git"
+  },
+  "author": "oohira <oohira.dev@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/kaigi-no-owari/kaigi-no-owari-server/issues"
+  },
+  "homepage": "https://github.com/kaigi-no-owari/kaigi-no-owari-server",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
