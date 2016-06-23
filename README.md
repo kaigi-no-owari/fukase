@@ -21,3 +21,26 @@ DATABASE_URL=postgres://user:password@localhost:5432/<DB名>
 $ npm install
 $ npm start
 ```
+
+## Heroku実行
+
+事前に Heroku Toolbelt を頑張ってインストール
+
+```sh
+$ brew install heroku
+```
+
+アプリケーションは別途作ってある前提でデプロイ
+
+```sh
+$ heroku login
+$ heroku git:remote -a <アプリケーション名>
+$ git push heroku master
+$ heroku open
+```
+
+なお、開発中のブランチをデプロイする場合は次の通り
+
+```sh
+$ git push heroku <ブランチ名>:master
+```
