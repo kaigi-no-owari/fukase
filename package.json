@@ -4,7 +4,7 @@
   "description": "スケジュール情報を配信するAPIサーバー",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nf start",
     "lint": "eslint .",
     "test": "eslint ."
   },
@@ -25,6 +25,7 @@
   "devDependencies": {
     "eslint": "^2.13.1",
     "eslint-config-airbnb-base": "^3.0.1",
-    "eslint-plugin-import": "^1.9.2"
+    "eslint-plugin-import": "^1.9.2",
+    "foreman": "^1.4.1"
   }
 }
