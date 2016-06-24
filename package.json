@@ -5,6 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "nf start",
+    "migrate:up": "db-migrate up",
+    "migrate:down": "db-migrate down",
+    "migrate:create": "db-migrate create",
     "lint": "eslint .",
     "test": "eslint ."
   },
@@ -20,6 +23,7 @@
   },
   "homepage": "https://github.com/kaigi-no-owari/kaigi-no-owari-server",
   "dependencies": {
+    "db-migrate": "^0.9.25",
     "express": "^4.14.0",
     "pg-promise": "^4.8.0"
   },

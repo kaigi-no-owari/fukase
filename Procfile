@@ -1,1 +1,1 @@
-web: node app.js
+web: npm run migrate:up && node app.js
