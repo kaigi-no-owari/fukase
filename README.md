@@ -22,6 +22,12 @@ $ npm install
 $ npm start
 ```
 
+開発中にローカルのDBを手動でマイグレーションしたい場合は次の通り
+
+```sh
+$ npm run migrate:up
+```
+
 ## Heroku実行
 
 事前に Heroku Toolbelt を頑張ってインストール
@@ -43,4 +49,15 @@ $ heroku open
 
 ```sh
 $ git push heroku <ブランチ名>:master
+```
+
+開発中にHerokuのDBを手動でマイグレーションしたい場合は次の通り。`PGSSLMODE` が必要なので注意
+
+```sh
+$ heroku config -s | grep DATABASE_URL
+DATABASE_URL='postgres://user:password@host:port/<DB名>'
+$ vi .env
+DATABASE_URL=postgres://user:password@host:port/<DB名>
+PGSSLMODE=require
+$ npm run migrate:up
 ```
