@@ -3,7 +3,7 @@ const router = express.Router(); // eslint-disable-line new-cap
 const pgp = require('pg-promise')();
 const db = pgp(process.env.DATABASE_URL);
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
   // 単純に全データ削除してから登録し直す
   db.tx(t => {
     const queries = [];
@@ -21,11 +21,10 @@ router.post('/', (req, res) => {
     return t.batch(queries);
   })
   .then(() => {
-    res.json('ok'); // FIXME
+    res.status(201).json({ status: 201, message: 'Created' });
   })
-  .catch(error => {
-    console.error(error);
-    res.json('error'); // FIXME
+  .catch(err => {
+    next(err);
   });
 });
 
