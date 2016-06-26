@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nf start",
+    "watch": "nodemon --exec 'nf start'",
     "migrate:up": "db-migrate up",
     "migrate:down": "db-migrate down",
     "migrate:create": "db-migrate create",
@@ -31,6 +32,7 @@
     "eslint": "^2.13.1",
     "eslint-config-airbnb-base": "^3.0.1",
     "eslint-plugin-import": "^1.9.2",
-    "foreman": "^1.4.1"
+    "foreman": "^1.4.1",
+    "nodemon": "^1.9.2"
   }
 }
