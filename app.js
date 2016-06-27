@@ -1,21 +1,27 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const routes = require('./routes/meetings');
 const app = express();
-const pgp = require('pg-promise')();
-const db = pgp(process.env.DATABASE_URL);
 const port = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+app.use('/api/meetings', routes);
 
 app.get('/', (req, res) => {
   res.send('OK');
 });
 
-app.get('/db', (req, res) => {
-  db.any('select * from information_schema.schemata')
-    .then(data => {
-      res.send(data);
-    })
-    .catch(error => {
-      res.send(error);
-    });
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+  const status = err.status || 500;
+  res.status(status).json({ status, message: err.message });
 });
 
 app.listen(port, () => {

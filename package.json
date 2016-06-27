@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/kaigi-no-owari/kaigi-no-owari-server",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "db-migrate": "^0.9.25",
     "express": "^4.14.0",
     "pg-promise": "^4.8.0"

@@ -1,6 +1,7 @@
 exports.up = (db, callback) => {
   db.createTable('meetings', {
-    room_id: { type: 'string', primaryKey: true },
+    id: { type: 'int', primaryKey: true, autoIncrement: true },
+    room_id: 'string',
     title: 'string',
     description: 'string',
     start_at: { type: 'datetime', notNull: true },
