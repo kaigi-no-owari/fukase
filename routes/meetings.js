@@ -3,15 +3,35 @@ const router = express.Router(); // eslint-disable-line new-cap
 const pgp = require('pg-promise')();
 const db = pgp(process.env.DATABASE_URL);
 
+function findMeetings(req) {
+  const params = {
+    room_id: req.params.room_id,
+    from: req.query.from || new Date(),
+    to: req.query.to,
+    limit: req.query.limit,
+  };
+  let sql = 'SELECT * FROM meetings WHERE $(from) <= end_at';
+  if (params.room_id) {
+    sql += ' AND room_id = $(room_id)';
+  }
+  if (params.to) {
+    sql += ' AND end_at <= $(to)';
+  }
+  sql += ' ORDER BY start_at ASC, id ASC';
+  if (params.limit) {
+    sql += ' LIMIT $(limit)';
+  }
+  return db.any(sql, params);
+}
+
 router.get('/', (req, res, next) => {
-  db.any('SELECT * FROM meetings ORDER BY start_at')
+  findMeetings(req)
   .then((data) => res.status(200).json(data))
   .catch((err) => next(err));
 });
 
 router.get('/:room_id', (req, res, next) => {
-  db.any('SELECT * FROM meetings WHERE room_id = $1 ORDER BY start_at',
-    [req.params.room_id])
+  findMeetings(req)
   .then((data) => res.status(200).json(data))
   .catch((err) => next(err));
 });
