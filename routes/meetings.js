@@ -10,7 +10,11 @@ function findMeetings(req) {
     to: req.query.to,
     limit: req.query.limit,
   };
-  let sql = 'SELECT * FROM meetings WHERE $(from) <= end_at';
+  let sql = 'SELECT id, room_id, title, description ,';
+  sql += ' to_char(start_at, \'YYYY-MM-DD"T"HH24:MI:SS"Z"\') AS start_at, ';
+  sql += ' to_char(end_at, \'YYYY-MM-DD"T"HH24:MI:SS"Z"\') AS end_at, ';
+  sql += ' to_char(registered_at, \'YYYY-MM-DD"T"HH24:MI:SS"Z"\') AS registered_at';
+  sql += ' FROM meetings WHERE $(from) <= end_at';
   if (params.room_id) {
     sql += ' AND room_id = $(room_id)';
   }
