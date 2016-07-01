@@ -1,5 +1,5 @@
 {
-  "name": "kaigi-no-owari-server",
+  "name": "fukase",
   "version": "1.0.0",
   "description": "スケジュール情報を配信するAPIサーバー",
   "engines": {
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaigi-no-owari/kaigi-no-owari-server.git"
+    "url": "https://github.com/kaigi-no-owari/fukase.git"
   },
   "author": "oohira <oohira.dev@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
   "bugs": {
-    "url": "https://github.com/kaigi-no-owari/kaigi-no-owari-server/issues"
+    "url": "https://github.com/kaigi-no-owari/fukase/issues"
   },
-  "homepage": "https://github.com/kaigi-no-owari/kaigi-no-owari-server",
+  "homepage": "https://github.com/kaigi-no-owari/fukase",
   "dependencies": {
     "body-parser": "^1.15.2",
     "db-migrate": "^0.9.25",
