@@ -2,6 +2,9 @@
   "name": "kaigi-no-owari-server",
   "version": "1.0.0",
   "description": "スケジュール情報を配信するAPIサーバー",
+  "engines": {
+    "node": "6.2.2"
+  },
   "main": "app.js",
   "scripts": {
     "start": "nf start",
