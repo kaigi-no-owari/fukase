@@ -40,6 +40,23 @@ router.get('/:room_id', (req, res, next) => {
   .catch((err) => next(err));
 });
 
+router.get('/:room_id/pow', (req, res, next) => {
+  const threshold = req.query.threshold || 10;
+  findMeetings(req)
+  .then((data) => {
+    if (data.length > 0) {
+      const endAt = new Date(data[0].end_at);
+      const remainingMillisec = endAt.getTime() - new Date().getTime();
+      if (remainingMillisec / 1000 / 60 <= threshold) {
+        res.status(200).json({ notification: true });
+        return;
+      }
+    }
+    res.status(200).json({ notification: false });
+  })
+  .catch((err) => next(err));
+});
+
 function getCreatedMeetings(req) {
   if (!Array.isArray(req.body)) {
     return [];
